@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    chronic (0.6.7)
     daemons (1.1.8)
     eventmachine (0.12.10)
     rack (1.4.1)
@@ -13,5 +14,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  chronic
   rack
   thin
