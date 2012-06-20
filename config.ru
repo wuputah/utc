@@ -1,4 +1,8 @@
+require 'rubygems'
+require 'bundler'
 require 'erb'
+
+Bundler.require
 
 # load/cache the template
 def template
@@ -8,7 +12,14 @@ end
 # eval the template
 def body(env)
   @env = env
+  @time = nil
   @request = Rack::Request.new(env)
+
+  if custom = @request.params["t"]
+    @time = Chronic.parse(custom)
+  end
+
+  @time ||= Time.now
   template.result(binding)
 end
 
