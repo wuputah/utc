@@ -15,7 +15,7 @@ class App
   def call(env)
     case env['HTTP_ACCEPT']
     when 'text/plain'
-      [200, {"Content-type" => "text/plain"}, StringIO.new(Time.now.strftime("%Y-%m-%dT%H:%M:%S.%N%z"))]
+      [200, {"Content-type" => "text/plain"}, StringIO.new(Time.now.strftime("%Y-%m-%dT%H:%M:%S.%N%:z"))]
     else
       [200, {"Content-type" => "text/html"}, StringIO.new(body(env))]
     end
