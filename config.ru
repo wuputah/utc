@@ -2,13 +2,13 @@ require 'erb'
 
 class App
   # load/cache the template
-  def template
-    @template ||= ERB.new(File.read(File.join(File.dirname(__FILE__), "index.html.erb")))
+  def initialize
+    @template = ERB.new(File.read(File.join(File.dirname(__FILE__), "index.html.erb")))
   end
 
   # eval the template
   def body(env)
-    template.result(binding)
+    @template.result(binding)
   end
 
   # main rack app
